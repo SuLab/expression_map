@@ -1,0 +1,23 @@
+#### comparison of phenotype annotation columns from gtex and tcga ####
+
+col.num	col.name	gtex.col	tcga.col
+1	data_id	4:run	19:bigwig_file
+2	project	"gtex"	1:project
+3	sample_id	20:sampid	65:gdc_cases.submitter_id
+4	sample_SR_id	2:sample	"NA"
+5	tissue_general	25:smts	77:gdc_cases.project.primary_site
+6	tissue_detail	26:smtsd	74:gdc_cases.project.name
+7	tumor_id	"NA"	78:gdc_cases.project.project_id
+8	tumor_stage	"NA"	90:gdc_cases.diagnoses.tumor_stages
+9	tumor_sample_type	"Normal"	108:gdc_cases.samples.sample_type
+10	living	"dead"	92:gdc_cases.diagnoses.vital_status
+11	age	"NA"	91:gdc_cases.diagnoses.age
+12	sex	"NA"	67:gdc_cases.demographic.gender
+13	ethnicity	"NA"	70:gdc_cases.demographic.race
+14	center_submitter	22:smcenter	40:gdc_center.short_name
+15	center_source	22:smcenter	86:gdc_cases.tissue_source_site.name
+16	extraction_kit	31:smnabtcht	"NA"
+17	seq_platform	"NA"	29:gdc_platform
+18	treatment_result	"NA"	193:cgc_case_primary_therapy_outcome_success
+19	autolysis_score	21:smatsscr	"NA"
+20	sample_notes	23:smpthnts	"NA"

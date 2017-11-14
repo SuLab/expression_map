@@ -1,0 +1,84 @@
+######## matches for organs #######
+
+TCGA Organ: column 77 -- gdc_cases.project.primary_site
+
+## grepped (in metasra)
+TCGA entry: Liver
+TCGA tissue detail: Liver Hepatocellular Carcinoma
+UBERON:0002107: liver
+DOID:684 hepatocellular carcinoma
+EFO:0000182: hepatocellular carcinoma
+
+TCGA entry: Pleura
+TCGA tissue detail: Mesothelioma
+UBERON:0000977: pleura
+CL:1000491: mesothelial cell of pleura (maybe)
+EFO:0000588: mesothelioma
+DOID:1790: malignant mesothelioma
+
+TCGA entry: Eye
+TCGA tissue detail: Uveal Melanoma
+UBERON:0000970: eye
+UBERON:0001768: uvea
+DOID:6039: uveal melanoma
+EFO:1000616: uveal melanoma
+
+TCGA entry: Thymus
+TCGA tissue detail: Thymoma
+UBERON:0002370: thymus
+DOID:3275: thymoma
+EFO:1000581: Thymoma
+
+TCGA entry: Thyroid
+TCGA tissue detail: Thyroid Carcinoma
+UBERON:0002046: thyroid gland
+DOID:3963: thyroid carcinoma
+EFO:0002892: thyroid carcinoma
+
+## OLS lookup
+TCGA entry: Colorectal
+UBERON:0012652: colorectum
+UBERON:0001052: rectum
+UBERON:0001155: colon
+Notes: in tissue detail (gdc_cases.project.name) actually labeled either rectum adenocarcinoma or colon adenocarcinoma with separate tumorID's (gdc_cases.project.project_id) of READ or COAD
+
+TCGA entry: Soft Tissue
+UBERON:0003104: mesenchyme
+UBERON:0034929: external soft tissue zone (definition: A region or zone on the surface of an organism that encompasses skin and any adnexa, down through muscles and bounded by underlying skeletal support structures. This entry is from the uberon anatomy ontology)
+EFO:1001968: soft tissue sarcoma
+EFO:0000691: sarcoma
+DOID:1115: sarcoma
+Notes: all of these tcga entries are sarcomas. so the tissue isn't really known. I just listed some options
+
+TCGA entry: Lymph Nodes
+TCGA tissue detail: Lymphoid Neoplasm Diffuse Large B-cell Lymphoma
+UBERON:0000029: lymph node
+UBERON:0010392: B cell domain
+CL:0000236: B cell (found in metasra)
+EFO:0000403: diffuse large B-cell lymphoma (found in metasra)
+DOID:0050745: diffuse large B-cell lymphoma (not in metasra)
+Notes: labeling this as lymph node may not be appropiate. B cell for tissue_general might be better
+
+TCGA entry: Ovary
+TCGA tissue detail: Ovarian Serous Cystadenocarcinoma
+UBERON:0000992: female gonad 
+CL:2000063: ovarian fibroblast (in metasra. not quite right)
+EFO:0001075: ovarian carcinoma (in metasra. not as specific)
+EFO:0003893: ovarian neoplasm (in metasra. not as specific)
+EFO:0006460: ovarian adenocarcinoma (in metasra. not as specific)
+DOID:5746: ovarian serous cystadenocarcinoma 
+EFO:1000043: ovarian serous cystadenocarcinoma
+Notes: uberon seems to only have right or left ovary. female gonad is the next node on the tree
+
+TCGA entry: Head and Neck
+TCGA tissue detail: Head and Neck Squamous Cell Carcinoma
+UBERON:0007811: craniocervical region 
+DOID:5520: head and neck squamous cell carcinoma
+EFO:0000181: head and neck squamous cell carcinoma (in metasra)
+
+TCGA entry: Bile Duct
+TCGA tissue detail: Cholangiocarcinoma
+UBERON:0002394: bile duct
+DOID:4947: cholangiocarcinoma
+EFO:0005221: cholangiocarcinoma
+

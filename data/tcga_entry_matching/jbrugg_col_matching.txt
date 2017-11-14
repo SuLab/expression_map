@@ -1,0 +1,314 @@
+Prostate:
+	organ:
+	UBERON:0002367: prostate gland
+	UBERON:0000428: prostate epithelium
+	CL:0002231: epithelial cell of prostate
+
+	tissue:
+	UBERON:0000428: prostate epithelium
+
+	efo_disease:
+	EFO:0000673: prostate adenocarcinoma
+	EFO:0007355: male reproductive organ cancer
+
+	doid_disease:
+	DOID:2526: prostate adenocarcinoma
+	DOID:10283: prostate cancer
+	
+Breast:
+	organ:
+	UBERON:0001911: mammary gland
+	UBERON:0008367: breast epithelium
+
+	tissue:
+	CL:0000066: epithelial cell
+	UBERON:0008367: breast epithelium
+
+	efo_disease:
+	EFO:0000305: breast carcinoma
+	EFO:0003869: breast neoplasm
+
+	doid_disease:
+	DOID:3459: breast carcinoma
+	DOID:1612: breast cancer
+
+Lung:
+	organ:
+	UBERON:0002048: lung
+
+	tissue:
+	UBERON:0000115: lung epithelium
+
+	efo_disease:
+	EFO:0000571: lung adenocarcinoma
+	EFO:0000708: squamous cell lung carcinoma
+
+	doid_disease:
+	DOID:3910: lung adenocarcinoma
+	DOID:3907: lung sqamous cell carcinoma
+	
+Bone Marrow:
+
+     organ:
+	UBERON:0002371: bone marrow
+	UBERON:0002481: bone tissue
+
+     tissue:
+	UBERON:0007195: stroma of bone marrow
+	CL:0002092: bone marrow cell
+	CL:0010004: mononuclear cell of bone marrow
+
+	efo_disease:
+	EFO:0000222: acute myeloid leukemia
+
+	doid_disease:
+	DOID:9119: acute myeloid leukemia
+
+Cervix: DONE
+	organ:
+	UBERON:0000002: uterine cervix
+
+	tissue:
+	UBERON:00004801: cervix epithelium
+
+	efo_disease:
+	EFO:1000172: cervical squamous cell carcinoma
+	EFO:0001416: Endocervical adenocarcinoma
+
+	doid_disease:
+	DOID:3744: cervical squamous cell carcinoma
+	DOID:0050940: endocervical adenocarcinoma
+
+	adenosquamous:
+	EFO:1000162: Cervical Adenosquamous Carcinoma
+	DOID:5636: cervical adenosquamous carcinoma
+
+Skin: DONE
+	organ:
+	CL:0002620: skin fibroblast
+	UBERON:0000014: zone of skin
+
+	tissue:
+	CL:0000066: epithelial cell
+	CL:0002620: skin fibroblast
+
+	efo_disease:
+	EFO:0000389: cutaneous melanoma
+
+	doid_disease:
+	DOID:1909: melanoma
+
+Esophagus DONE
+
+	organ:
+	UBERON:0001043: esophagus
+
+	tissue:
+	UBERON:0001976: epithelium of esophagus
+
+	efo_disease:
+	EFO:0002916: esophageal carcinoma
+
+	doid_disease:
+	DOID:1107: esophageal carcinoma
+
+Bladder DONE
+
+	organ:
+	UBERON:0001255: urinary bladder
+
+	tissue:
+	UBERON:0001255: urinary bladder	
+
+	efo_disease:
+	EFO:0000292: bladder carcinoma
+
+	doid_disease:
+	DOID:4006: bladder urothelial carcinoma
+	DOID:11054: urinary bladder cancer
+
+Brain: DONE
+
+	organ:
+	UBERON:0000955: brain
+
+	tissue:
+	UBERON:0000955: brain
+	UBERON:0003714: neural tissue
+
+	efo_disease:
+	EFO:0000519: glioblastoma multiforme
+	EFO:0005543: glioma
+
+	doid_disease:
+	DOID:3073: brain glioblastoma multiforme
+	DOID:3070: malignant glioma
+
+Kidney: DONE
+
+	'Kidney Renal Clear Cell Carcinoma'
+	
+	organ:
+	UBERON:0002113: kidney
+
+	tissue:
+	UBERON:0004819: kidney epithelium
+
+	efo_disease:
+	EFO:0000349: clear cell renal carcinoma
+
+	doid_disease:
+	DOID:4467: renal clear cell carcinoma
+
+	'Kidney Chromophobe'
+
+	organ: 
+	UBERON:0002113: kidney
+
+	tissue:
+	UBERON:0001285: nephron
+
+	efo_disease:
+	EFO:0000335: chromophobe renal cell carcinoma
+
+	doid_disease:
+	DOID:4471: chromophobe renal cell carcinoma
+	
+	'Kidney Renal Papillary Cell Carcinoma'
+
+	organ:
+	UBERON:0002113: kidney
+
+	tissue:
+	UBERON:0005167: papillary duct
+
+	efo_disease:
+	EFO:0000640: papillary renal cell carcinoma
+
+	doid_disease:
+	DOID:4465: papillary renal cell carcinoma
+
+Testis: DONE
+
+	organ:
+	UBERON:0000473: testis
+
+	tissue:
+	UBERON:0000473
+
+	efo_disease:
+	EFO:1000566: testicular germ cell tumor
+
+	doid_disease:
+	DOID:5557: testicular germ cell cancer
+
+Uterus: DONE
+
+	'Uterine Corpus Endometrial Carcinoma'
+
+	organ:
+	UBERON:0000995: uterus
+
+	tissue:
+	UBERON:0001295: endometrium
+	
+	efo_disease:
+	EFO:1001512: endometrial carcinoma
+
+	doid_disease:
+	DOID:0050939: uterine corpus endometrial carcinoma
+	
+	'Uterine Carcinosarcoma'
+
+	organ:
+	UBERON:0000995: uterus
+
+	tissue:
+	UBERON:0000459: uterine wall
+
+	efo_disease:
+	EFO:1000613: uterine carcinosarcoma
+
+	doid_disease:
+	DOID:6171: uterine carcinosarcoma
+
+Pancreas: DONE
+	
+	organ:
+	UBERON:0001264: pancreas
+
+	tissue:
+	UBERON:0009970: epithelium of pancreatic duct
+
+	efo_disease:
+	EFO:0002517: pancreatic ductal adenocarcinoma
+	EFO:1000044: pancreatic adenocarcinoma
+
+	doid_disease:
+	DOID:4074: pancreatic adenocarcinoma
+	DOID:3498: pancreatic ductal adenocarcinoma
+
+Adrenal Gland: DONE
+
+	'Pheochromocytoma and Paraganglioma'
+
+	organ:
+	UBERON:0002369: adrenal gland
+
+	tissue:
+	UBERON:0002369: adrenal gland
+	UBERON:0018303: adrenal tissue
+
+	efo_disease:
+	EFO:0003850: adrenal gland neoplasm
+	EFO:0000239: adrenal gland pheochromocytoma
+	EFO:1000453: paraganglioma
+
+	doid_disease:
+	DOID:3953: adrenal gland cancer
+	DOID:0050892: adrenal gland pheochromocytoma
+	DOID:0050773: paraganglioma
+
+	'Adrenocortical Carcinoma'
+
+	organ:
+	UBERON:0002369: adrenal gland
+
+	tissue:
+	UBERON:0001235: adrenal cortex
+
+	efo_disease:
+	EFO:0003093: adrenocortical carcinoma
+
+	doid_disease:
+	DOID:3948: adrenocortical carcinoma
+
+Pleura: DONE
+	
+	organ:
+	UBERON:0000977: pleura
+
+	tissue:
+	UBERON:0003390: mesothelium of pleural cavity
+
+	efo_disease:
+	EFO:0000588: mesothelioma
+
+	doid_disease:
+	DOID:1790: mesothelioma
+
+Stomach: DONE
+
+	organ:
+	UBERON:0000945: stomach
+
+	tissue:
+	UBERON:0001276: epithelium of stomach
+
+	efo_disease:
+	EFO:0000503: gastric adenocarcinoma
+
+	doid_disease:
+	DOID:3717: gastric adenocarcinoma
+
+
