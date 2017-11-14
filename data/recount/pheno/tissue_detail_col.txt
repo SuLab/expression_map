@@ -1,0 +1,101 @@
+      2 
+    126 Acute Myeloid Leukemia
+    386 Adipose - Subcutaneous
+    234 Adipose - Visceral (Omentum)
+    162 Adrenal Gland
+     79 Adrenocortical Carcinoma
+    247 Artery - Aorta
+    140 Artery - Coronary
+    363 Artery - Tibial
+      9 Bile Duct
+     30 Bladder
+    414 Bladder Urothelial Carcinoma
+      5 Brain
+     81 Brain - Amygdala
+     99 Brain - Anterior cingulate cortex (BA24)
+    134 Brain - Caudate (basal ganglia)
+    118 Brain - Cerebellar Hemisphere
+    145 Brain - Cerebellum
+    132 Brain - Cortex
+    120 Brain - Frontal Cortex (BA9)
+    103 Brain - Hippocampus
+    104 Brain - Hypothalamus
+    532 Brain Lower Grade Glioma
+    123 Brain - Nucleus accumbens (basal ganglia)
+    103 Brain - Putamen (basal ganglia)
+     76 Brain - Spinal cord (cervical c-1)
+     71 Brain - Substantia nigra
+    112 Breast
+   1134 Breast Invasive Carcinoma
+    218 Breast - Mammary Tissue
+    139 Cells - EBV-transformed lymphocytes
+    102 Cells - Leukemia cell line (CML)
+    306 Cells - Transformed fibroblasts
+    306 Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma
+      3 Cervix
+      6 Cervix - Ectocervix
+      5 Cervix - Endocervix
+     36 Cholangiocarcinoma
+    505 Colon Adenocarcinoma
+    173 Colon - Sigmoid
+    203 Colon - Transverse
+     51 Colorectal
+    185 Esophageal Carcinoma
+     13 Esophagus
+    176 Esophagus - Gastroesophageal Junction
+    331 Esophagus - Mucosa
+    283 Esophagus - Muscularis
+      7 Fallopian Tube
+    170 Glioblastoma Multiforme
+     44 Head and Neck
+    504 Head and Neck Squamous Cell Carcinoma
+    218 Heart - Atrial Appendage
+    271 Heart - Left Ventricle
+    129 Kidney
+     66 Kidney Chromophobe
+     36 Kidney - Cortex
+    544 Kidney Renal Clear Cell Carcinoma
+    291 Kidney Renal Papillary Cell Carcinoma
+    186 Liver
+    374 Liver Hepatocellular Carcinoma
+    484 Lung
+    542 Lung Adenocarcinoma
+    504 Lung Squamous Cell Carcinoma
+     48 Lymphoid Neoplasm Diffuse Large B-cell Lymphoma
+     87 Mesothelioma
+     70 Minor Salivary Gland
+    475 Muscle - Skeletal
+      1 NA
+    335 Nerve - Tibial
+    430 Ovarian Serous Cystadenocarcinoma
+    108 Ovary
+    201 Pancreas
+    179 Pancreatic Adenocarcinoma
+    184 Pheochromocytoma and Paraganglioma
+    124 Pituitary
+    171 Prostate
+    506 Prostate Adenocarcinoma
+    167 Rectum Adenocarcinoma
+    263 Sarcoma
+      1 Skin
+    472 Skin Cutaneous Melanoma
+    271 Skin - Not Sun Exposed (Suprapubic)
+    397 Skin - Sun Exposed (Lower leg)
+    104 Small Intestine - Terminal Ileum
+      2 Soft Tissue
+    118 Spleen
+    241 Stomach
+    416 Stomach Adenocarcinoma
+      1 T3
+    156 Testicular Germ Cell Tumors
+    203 Testis
+    120 Thymoma
+      2 Thymus
+    420 Thyroid
+    513 Thyroid Carcinoma
+     57 Uterine Carcinosarcoma
+    554 Uterine Corpus Endometrial Carcinoma
+    125 Uterus
+     80 Uveal Melanoma
+     97 Vagina
+    456 Whole Blood

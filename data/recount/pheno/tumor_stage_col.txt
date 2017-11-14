@@ -1,0 +1,24 @@
+      2 
+     14 i/ii nos
+     50 is
+  10424 NA
+   3567 not reported
+      7 stage 0
+   1267 stage i
+    394 stage ia
+    415 stage ib
+    623 stage ii
+    827 stage iia
+    714 stage iib
+     67 stage iic
+    695 stage iii
+    502 stage iiia
+    280 stage iiib
+    253 stage iiic
+    476 stage iv
+    333 stage iva
+     18 stage ivb
+      7 stage ivc
+     13 stage x
+      1 TCGA-23-1023-01R-01
+      1 TCGA-XV-AB01-06A-12

@@ -1,0 +1,5 @@
+      2 
+   9476 female
+  11431 male
+     40 NA
+      1 NX

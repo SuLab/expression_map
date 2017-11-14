@@ -1,0 +1,10 @@
+      2 
+      1 Additional Metastatic
+     11 Additional - New Primary
+    394 Metastatic
+      1 NA
+      1 NO
+  10402 Normal
+    126 Primary Blood Derived Cancer - Peripheral Blood
+   9962 Primary Tumor
+     50 Recurrent Tumor

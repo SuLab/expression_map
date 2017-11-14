@@ -1,0 +1,69 @@
+---
+title: "test_tsne_200"
+output: html_document
+---
+  
+```{r warning=FALSE, error=FALSE, message=FALSE, echo=FALSE, comment=NA}
+knitr::opts_knit$set(global.par = TRUE)
+```
+
+```{r fig.width=22, fig.height=20, warning=FALSE, error=FALSE, message=FALSE, echo=FALSE, comment=NA}
+library(Rtsne)
+library(ggplot2)
+library(RColorBrewer)
+library(gridExtra)
+
+gtex_tpm <- read.table("/gpfs/group/su/lhgioia/map/data/recount/scaled/gtex_tpm_100.tsv", header=T, stringsAsFactors = F)
+gtex_labels <- paste("gtex", 1:100, sep = ".")
+names(gtex_tpm) <- gtex_labels
+
+tcga_tpm <- read.table("/gpfs/group/su/lhgioia/map/data/recount/scaled/tcga_tpm_100.tsv", header=T, stringsAsFactors = F)
+tcga_labels <- paste("tcga", 1:100, sep = ".")
+names(tcga_tpm) <- tcga_labels
+
+tpm_data <- cbind(gtex_tpm, tcga_tpm)
+ttpm <- as.data.frame(t(tpm_data))
+
+genes <- read.table("/gpfs/group/su/lhgioia/map/data/recount/row_info_genes.txt", header=T, stringsAsFactors = F)
+
+names(ttpm) <- genes[,1]
+
+ids <- c(rep("gtex", 100), rep("tcga", 100))
+
+
+## t-SNE
+set.seed(1)
+tsne_out <- Rtsne(as.matrix(ttpm), perplexity = 30)
+
+tsne_y <- as.data.frame(cbind(tsne_out$Y, ids))
+
+names(tsne_y) <- c("y1", "y2", "data_source")
+tsne_y$data_source <- factor(tsne_y$data_source)
+
+tsne_y[, 1] <- as.numeric(tsne_y[, 1])
+tsne_y[, 2] <- as.numeric(tsne_y[, 2])
+# for(i in c(1,2,5:ncol(tsne_y))){
+#   tsne_y[, i] <- as.numeric(tsne_y[, i])
+# }
+
+
+tsne <- ggplot(tsne_y, aes(y1, y2)) +
+  geom_point(aes(color=data_source), size = 3, alpha = 0.9) +
+  scale_colour_brewer(palette = "Accent") +
+  scale_x_continuous(breaks=seq(min(tsne_y$y1), max(tsne_y$y1), length.out = 10),
+                     minor_breaks = NULL) +
+  scale_y_continuous(breaks=seq(min(tsne_y$y2), max(tsne_y$y2), length.out = 10),
+                     minor_breaks = NULL) +
+  guides(color=guide_legend(title="data source")) +
+  ggtitle("t-SNE for 200 samples (colored by data source)") +
+  theme(axis.line=element_blank(),
+        axis.text.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        text=element_text(size=28),
+        plot.margin=unit(c(14,9,14,9),"cm"))
+print(tsne)
+
+```

@@ -1,0 +1,6 @@
+      2 
+      2 0
+   7858 alive
+  13048 dead
+     39 NA
+      1 not reported

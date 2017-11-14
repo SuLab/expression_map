@@ -1,0 +1,24 @@
+Aim 1
+	-Background
+		-public expression databases
+			-geo
+			-arrayexpress
+		-t-SNE
+			-some math
+			-2008 paper vs isomap etc
+			-allen brain atlas t-sne vs pca
+	-Aims slide
+	-recount
+	-prototype
+		-current state
+		-functionality to add
+			-selection
+			-expression differences
+			-link to download
+Aim 2
+	-Background
+		-iPSCs
+			-other attempts: CellNet
+		-CUPs
+	-Significance: both cases want to know what their sample is
+	-focusing application on these two sample types

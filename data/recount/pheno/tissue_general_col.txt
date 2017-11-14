@@ -1,0 +1,42 @@
+      7 
+    620 Adipose Tissue
+    425 Adrenal Gland
+     45 Bile Duct
+    444 Bladder
+    595 Blood
+    750 Blood Vessel
+    228 Bone Marrow
+   2116 Brain
+   1464 Breast
+    309 Cervix
+     11 Cervix Uteri
+    376 Colon
+    723 Colorectal
+    986 Esophagus
+     80 Eye
+      7 Fallopian Tube
+      2 FEMALE
+    548 Head and Neck
+    489 Heart
+   1066 Kidney
+    560 Liver
+   1530 Lung
+     48 Lymph Nodes
+    475 Muscle
+    335 Nerve
+    538 Ovary
+    380 Pancreas
+    124 Pituitary
+     87 Pleura
+    677 Prostate
+     70 Salivary Gland
+   1445 Skin
+    104 Small Intestine
+    265 Soft Tissue
+    118 Spleen
+    656 Stomach
+    359 Testis
+    122 Thymus
+    933 Thyroid
+    736 Uterus
+     97 Vagina
