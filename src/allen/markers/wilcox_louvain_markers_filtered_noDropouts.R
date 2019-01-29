@@ -7,13 +7,13 @@ setwd('/gpfs/group/su/lhgioia/map/')
 ## allen.dat <- allen.dat[,var.genes]
 ## saveRDS(allen.dat,'data/allen/allen_tpm_variable_genes_log_4k.RDS')
 
-allen.pca <- readRDS('results/allen/pca/allen_50_dim_4k_filtered_irlba.RDS')
+allen.pca <- readRDS('results/allen/pca/allen_50_dim_noDropouts_filtered_irlba.RDS')
 
 tpm.dat <- read.table('data/allen/tpm_matrix.csv',sep=',',header=T)
 gene.vars <- apply(tpm.dat,2,var)
 tpm.dat <- tpm.dat[,gene.vars>0]
 
-louvain.dat <- readRDS('results/allen/clustering/louvain_pca_filtered_4k_k30.RDS')
+louvain.dat <- readRDS('results/allen/clustering/louvain_pca_filtered_noDropouts_k30.RDS')
 
 cluster.vec <- louvain.dat$membership
 names(cluster.vec) <- rownames(allen.pca)
@@ -75,7 +75,7 @@ for(i in unique(cluster.vec)){
 
     print(sprintf('Completed cluster %d',i))
 
-    saveRDS(pval.res,'results/allen/markers/louvain_wilcox_markers.RDS')
+    saveRDS(pval.res,'results/allen/markers/louvain_wilcox_markers_filtered_noDropouts.RDS')
 }
 
 

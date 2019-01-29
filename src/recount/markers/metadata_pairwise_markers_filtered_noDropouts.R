@@ -1,37 +1,81 @@
-library(exactRankTests)
+library(jsonlite)
 
 setwd('/gpfs/group/su/lhgioia/map/')
 
-## allen.dat <- read.table('data/allen/tpm_matrix.csv',sep=',',header=T)
-## var.genes <- readRDS('results/allen/variable_genes_log_4k.RDS')
-## allen.dat <- allen.dat[,var.genes]
-## saveRDS(allen.dat,'data/allen/allen_tpm_variable_genes_log_4k.RDS')
+# make tpm matrix
+ 
+tcga.tpm <- as.matrix(readRDS('data/recount/tcga/tpm_tcga.RDS'))
+gtex.tpm <- as.matrix(readRDS('data/recount/gtex/tpm_gtex.RDS'))
 
-allen.pca <- readRDS('results/allen/pca/allen_50_dim_4k_filtered_irlba.RDS')
+tpm.dat <- matrix(0,nrow=70603,ncol=58037)
 
-## tpm.dat <- read.table('data/allen/tpm_matrix.csv',sep=',',header=T)
-## ## gene.vars <- apply(tpm.dat,2,var)
-## var.genes <- readRDS('results/allen/variable_genes_log_4k.RDS')
-## ## tpm.dat <- tpm.dat[,gene.vars>0]
-## tpm.dat <- tpm.dat[,var.genes,drop=F]
-tpm.dat <- readRDS('data/allen/allen_tpm_variable_genes_log_4k.RDS')
+cnt <- 1
 
-louvain.dat <- readRDS('results/allen/clustering/louvain_pca_filtered_4k_k30.RDS')
+tpm.dat[cnt:nrow(tcga.tpm),] <- tcga.tpm
+cnt <- cnt + nrow(tcga.tpm)
 
-cluster.vec <- louvain.dat$membership
-names(cluster.vec) <- rownames(allen.pca)
+tpm.rownames <- rownames(tcga.tpm)
 
-cluster.vec <- cluster.vec[rownames(tpm.dat)]
+tpm.dat[cnt:(cnt + nrow(gtex.tpm)-1),] <- gtex.tpm
+cnt <- cnt + nrow(gtex.tpm)
+
+tpm.rownames <- c(tpm.rownames,rownames(gtex.tpm))
+
+for(file.id in list.files('data/recount/project_cnts')){
+
+    file.tpm <- as.matrix(readRDS(sprintf('data/recount/project_cnts/%s/gene_counts_tpm.RDS',file.id)))
+
+    tpm.dat[cnt:(cnt + nrow(file.tpm) - 1),] <- file.tpm
+    cnt <- cnt + nrow(file.tpm)
+
+    tpm.rownames <- c(tpm.rownames,rownames(file.tpm))
+    ## tpm.dat <- rbind(tpm.dat,file.tpm)
+
+}
+
+print(cnt)
+print(dim(tpm.dat))
+
+rownames(tpm.dat) <- tpm.rownames
+colnames(tpm.dat) <- colnames(tcga.tpm)
+# filter non-variable genes
+
+gene.vars <- apply(tpm.dat,2,var)
+tpm.dat <- tpm.dat[,gene.vars>0]
+
+print(dim(tpm.dat))
+
+metadata.df <- read.table('data/recount/metadata/mesh_uberon_subjtree_table.csv',sep=',',stringsAsFactors=F,header=T)
+rownames(metadata.df) <- metadata.df$id
+
+metadata.info <- metadata.df['A',]
+metadata.list <- fromJSON(metadata.info$termTree)
+
+interesting.systems <- c('Digestive System','Nervous System','Endocrine System','Cardiovascular System','Musculoskeletal System','Respiratory System','Hemic and Immune Systems','Integumentary System')
+
+## louvain.dat <- readRDS('results/allen/clustering/louvain_pca_filtered_noDropouts_k30.RDS')
+
+## cluster.vec <- louvain.dat$membership
+## names(cluster.vec) <- rownames(allen.pca)
+
+## cluster.vec <- cluster.vec[rownames(tpm.dat)]
 
 ## pval.mat <- matrix(0,nrow=ncol(tpm.dat),ncol=length(unique(cluster.vec)))
 
 pval.res <- list()
 
-for(i in 1:length(unique(cluster.vec))){
-    for(j in (i+1):length(unique(cluster.vec))){
+for(i in 1:length(interesting.systems)){
+    for(j in (i+1):length(interesting.systems)){
 
-        first.clust.dat <- tpm.dat[cluster.vec==i,,drop=F]
-        second.clust.dat <- tpm.dat[cluster.vec==j,,drop=F]
+        if(i == j | j > length(interesting.systems)){
+            next
+        }
+
+        first.clust.samps <- intersect(rownames(tpm.dat),metadata.list[[interesting.systems[i]]])
+        second.clust.samps <- intersect(rownames(tpm.dat),metadata.list[[interesting.systems[j]]])
+
+        first.clust.dat <- tpm.dat[first.clust.samps,,drop=F]
+        second.clust.dat <- tpm.dat[second.clust.samps,,drop=F]
 
         samp.dat <- rbind(first.clust.dat,second.clust.dat)
 
@@ -51,10 +95,14 @@ for(i in 1:length(unique(cluster.vec))){
             next
         }
 
-        out.dat <- apply(first.clust.dat,2,function(x) log(mean(expm1(x)+1)))
-        in.dat <- apply(second.clust.dat,2,function(x) log(mean(expm1(x)+1)))
+        ## out.dat <- apply(first.clust.dat,2,function(x) log(mean(expm1(x)+1)))
+        ## in.dat <- apply(second.clust.dat,2,function(x) log(mean(expm1(x)+1)))
+
+        out.dat <- apply(first.clust.dat,2,function(x) log2(mean(x+1)))
+        in.dat <- apply(second.clust.dat,2,function(x) log2(mean(x+1)))
+        
         total.diff <- out.dat-in.dat
-        genes.diff <- names(which(abs(total.diff) > 0.25)) # NOTE: this is using the not log of the threshold. aka using 1.2x threshold for the logfc.
+        genes.diff <- names(which(abs(total.diff) > 1)) # NOTE: this is using the not log of the threshold. aka using 1.2x threshold for the logfc.
 
         genes.use <- intersect(genes.use,genes.diff)
         if(length(genes.use) == 0){
@@ -65,7 +113,7 @@ for(i in 1:length(unique(cluster.vec))){
         gene.tests <- tryCatch(
         {
             ## sapply(1:ncol(counts.mat),function(x) {return(wilcox.test(counts.mat[,x] ~ as.factor(group.vec))$p.value)})
-            apply(samp.dat[,genes.use,drop=F],2,function(x) wilcox.exact(x ~ as.factor(group.vec)))
+            apply(samp.dat[,genes.use,drop=F],2,function(x) t.test(x ~ as.factor(group.vec)))
         },
         error = function(cond) {
             print(i)
@@ -85,7 +133,7 @@ for(i in 1:length(unique(cluster.vec))){
 
         print(sprintf('Completed cluster %d %d',i,j))
 
-        saveRDS(pval.res,'results/allen/markers/louvain_wilcox_markers_pairwise.RDS')
+        saveRDS(pval.res,'results/recount/markers/anatomy_ttest_markers_pairwise.RDS')
     }
 }
 

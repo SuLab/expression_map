@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#PBS -N tsne_baldwin_allen
+#PBS -N noAnnio_tsne_scaled
 #PBS -q workq
 #PBS -l nodes=1:ppn=8
 #PBS -l mem=31gb
@@ -12,7 +12,8 @@
 
 cd $PBS_O_WORKDIR
 
-module load R
+module load R/3.4.3
 
-Rscript src/tsne_runs/allen_baldwin_tsne.R
-# Rscript src/tsne_runs/allen_tsne.R
+# Rscript src/amnio_endo/tsne/recount_noNA_pca.R
+Rscript src/amnio_endo/tsne/recount_noAmnio_tsne_normalizedPCA.R
+

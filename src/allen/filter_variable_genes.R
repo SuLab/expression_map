@@ -49,9 +49,10 @@ rownames(gene.df) <- names(data.mean.bin)
 
 saveRDS(gene.df,'results/allen/binned_gene_dispersion_log_adj.RDS')
 
-low.cutoff <- quantile(gene.means,probs=c(0.05)
+low.cutoff <- quantile(gene.means,probs=c(0.05))
 
 ## passed.cutoff <- names(gene.means)[which((gene.disp.scaled > 0.5) & (gene.means > 0.0125))]
+                       
 passed.cutoff <- names(gene.means)[which((gene.disp.scaled > 0.5) & (gene.means > low.cutoff))]
 
 length(passed.cutoff)

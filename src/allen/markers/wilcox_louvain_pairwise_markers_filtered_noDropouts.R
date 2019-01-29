@@ -7,16 +7,16 @@ setwd('/gpfs/group/su/lhgioia/map/')
 ## allen.dat <- allen.dat[,var.genes]
 ## saveRDS(allen.dat,'data/allen/allen_tpm_variable_genes_log_4k.RDS')
 
-allen.pca <- readRDS('results/allen/pca/allen_50_dim_4k_filtered_irlba.RDS')
+allen.pca <- readRDS('results/allen/pca/allen_50_dim_noDropouts_filtered_irlba.RDS')
 
-## tpm.dat <- read.table('data/allen/tpm_matrix.csv',sep=',',header=T)
-## ## gene.vars <- apply(tpm.dat,2,var)
+tpm.dat <- read.table('data/allen/tpm_matrix.csv',sep=',',header=T)
+gene.vars <- apply(tpm.dat,2,var)
 ## var.genes <- readRDS('results/allen/variable_genes_log_4k.RDS')
-## ## tpm.dat <- tpm.dat[,gene.vars>0]
+tpm.dat <- tpm.dat[,gene.vars>0]
 ## tpm.dat <- tpm.dat[,var.genes,drop=F]
-tpm.dat <- readRDS('data/allen/allen_tpm_variable_genes_log_4k.RDS')
+## tpm.dat <- readRDS('data/allen/allen_tpm_variable_genes_log_4k.RDS')
 
-louvain.dat <- readRDS('results/allen/clustering/louvain_pca_filtered_4k_k30.RDS')
+louvain.dat <- readRDS('results/allen/clustering/louvain_pca_filtered_noDropouts_k30.RDS')
 
 cluster.vec <- louvain.dat$membership
 names(cluster.vec) <- rownames(allen.pca)
@@ -65,7 +65,7 @@ for(i in 1:length(unique(cluster.vec))){
         gene.tests <- tryCatch(
         {
             ## sapply(1:ncol(counts.mat),function(x) {return(wilcox.test(counts.mat[,x] ~ as.factor(group.vec))$p.value)})
-            apply(samp.dat[,genes.use,drop=F],2,function(x) wilcox.exact(x ~ as.factor(group.vec)))
+            apply(samp.dat[,genes.use,drop=F],2,function(x) wilcox.test(x ~ as.factor(group.vec)))
         },
         error = function(cond) {
             print(i)
@@ -85,7 +85,7 @@ for(i in 1:length(unique(cluster.vec))){
 
         print(sprintf('Completed cluster %d %d',i,j))
 
-        saveRDS(pval.res,'results/allen/markers/louvain_wilcox_markers_pairwise.RDS')
+        saveRDS(pval.res,'results/allen/markers/louvain_wilcox_markers_pairwise_noDropouts_filtered.RDS')
     }
 }
 

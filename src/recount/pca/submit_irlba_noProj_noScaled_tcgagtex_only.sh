@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#PBS -N tsne_baldwin_allen
+#PBS -N recount_irlba_tcgagtex
 #PBS -q workq
-#PBS -l nodes=1:ppn=8
-#PBS -l mem=31gb
+#PBS -l nodes=1:ppn=1
+#PBS -l mem=251gb
 #PBS -l walltime=100:00:00
 #PBS -o /gpfs/home/jbrugg/map/results/logs/
 #PBS -j oe
@@ -13,6 +13,9 @@
 cd $PBS_O_WORKDIR
 
 module load R
+module load gcc
 
-Rscript src/tsne_runs/allen_baldwin_tsne.R
-# Rscript src/tsne_runs/allen_tsne.R
+Rscript src/recount/pca/irlba_noProj_noScaled_tcgagtex_only.R
+
+
+
